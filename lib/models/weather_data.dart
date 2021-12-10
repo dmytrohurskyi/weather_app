@@ -28,6 +28,7 @@ class WeatherData {
   Wind? wind;
   int? dt;
   Sys? sys;
+  String locationName = '';
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

@@ -1,14 +1,16 @@
+import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:location/location.dart';
 
 class LocationService {
-  /*LocationService();
+  LocationService();
 
   final Location location = Location();
   late bool _serviceEnabled;
   late PermissionStatus _permissionGranted;
-  late LocationData _locationData;*/
+  late final LocationData? _locationData;
+  String lastKnownLocation = '';
 
-  /*Future<LocationData> getCurrentLocationData() async {
+  Future<LocationData?> getCurrentLocationData() async {
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -20,6 +22,16 @@ class LocationService {
         return await location.getLocation();
       }
     }
-    return ;
-  }*/
+    return null;
+  }
+
+  Future<String> getLocationName() async {
+    _locationData = await getCurrentLocationData();
+    List<geocoding.Placemark> locationPlacemarks =
+        await geocoding.placemarkFromCoordinates(
+            _locationData!.latitude!, _locationData!.longitude!);
+    lastKnownLocation = '${locationPlacemarks.first.administrativeArea}, '
+        '${locationPlacemarks.first.isoCountryCode}';
+    return lastKnownLocation;
+  }
 }
