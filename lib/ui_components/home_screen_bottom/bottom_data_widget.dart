@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_data.dart';
+import 'package:weather_app/ui_components/home_screen_bottom/end_column_widget.dart';
+import 'package:weather_app/ui_components/home_screen_bottom/middle_column_widget.dart';
+import 'package:weather_app/ui_components/home_screen_bottom/start_column_widget.dart';
 
 class BottomDataWidget extends StatefulWidget {
   final WeatherData weatherData;
@@ -17,11 +20,15 @@ class _BottomDataWidgetState extends State<BottomDataWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 200,
-          width: 350,
-          color: Colors.yellow,
-        )
+        StartColumnWidget(weatherData: widget.weatherData),
+        const SizedBox(
+          width: 48,
+        ),
+        MiddleColumnWidget(weatherData: widget.weatherData),
+        const SizedBox(
+          width: 48,
+        ),
+        EndColumnWidget(weatherData: widget.weatherData),
       ],
     );
   }

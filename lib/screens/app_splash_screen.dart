@@ -8,6 +8,8 @@ class AppSplashScreen extends StatelessWidget {
   AppSplashScreen({Key? key}) : super(key: key);
 
   final _apiService = ApiService();
+
+  //final _locationService = LocationService();
   dynamic weatherData;
 
   @override
@@ -19,16 +21,18 @@ class AppSplashScreen extends StatelessWidget {
   }
 
   Future<Object> loadInitWeather(BuildContext context) async {
+    /*LocationData location = await _locationService.getCurrentLocationData();
+    final locationString = await GeoCode().reverseGeocoding(
+        latitude: location.latitude!, longitude: location.longitude!);*/
     _apiService
         .setOptions('https://community-open-weather-map.p.rapidapi.com/');
-    Response response =
-    await _apiService.fetchCurrentWeather('Kyiv');
+
+    Response response = await _apiService.fetchCurrentWeather('Kyiv, Ukraine');
+    //'${locationString.city}, ${locationString.countryName}'
+
     weatherData = WeatherData.fromJson(response.data);
 
-    return Navigator.pushNamed(
-        context, '/home',
-        arguments: {'initWeatherData': weatherData}
-    );
+    return Navigator.pushNamed(context, '/home',
+        arguments: {'initWeatherData': weatherData});
   }
-
 }
