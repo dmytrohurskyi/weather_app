@@ -17,11 +17,7 @@ class _MiddleDataWidgetState extends State<MiddleDataWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 150,
-          width: 350,
-          color: Colors.green,
-        )
+        
       ],
     );
   }

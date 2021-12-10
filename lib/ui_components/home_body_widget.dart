@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_data.dart';
 import 'package:weather_app/ui_components/main_column_home_widget.dart';
 
 class HomeBodyWidget extends StatefulWidget {
-  const HomeBodyWidget({Key? key}) : super(key: key);
+  final WeatherData initWeatherData;
+
+  const HomeBodyWidget({Key? key, required this.initWeatherData})
+      : super(key: key);
 
   @override
   _HomeBodyWidgetState createState() => _HomeBodyWidgetState();
@@ -22,8 +26,10 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
           ],
         ),
       ),
-      child: const SafeArea(
-        child: MainColumnHomeWidget(),
+      child: SafeArea(
+        child: MainColumnHomeWidget(
+          initWeatherData: widget.initWeatherData,
+        ),
       ),
     );
   }

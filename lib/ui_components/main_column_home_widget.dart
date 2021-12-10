@@ -2,13 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_data.dart';
 import 'package:weather_app/services/api_service.dart';
-import 'package:weather_app/ui_components/middle_data_widget.dart';
-import 'package:weather_app/ui_components/top_data_widget.dart';
+import 'package:weather_app/ui_components/home_screen_middle/middle_data_widget.dart';
+import 'package:weather_app/ui_components/home_screen_top/top_data_widget.dart';
 
-import 'bottom_data_widget.dart';
+import 'home_screen_bottom/bottom_data_widget.dart';
 
 class MainColumnHomeWidget extends StatefulWidget {
-  const MainColumnHomeWidget({Key? key}) : super(key: key);
+  final WeatherData initWeatherData;
+
+  const MainColumnHomeWidget({Key? key, required this.initWeatherData})
+      : super(key: key);
 
   @override
   _MainColumnHomeWidgetState createState() => _MainColumnHomeWidgetState();
@@ -16,18 +19,11 @@ class MainColumnHomeWidget extends StatefulWidget {
 
 class _MainColumnHomeWidgetState extends State<MainColumnHomeWidget> {
   final _apiService = ApiService();
-  var weatherData;
+  WeatherData weatherData = WeatherData();
 
   @override
   void initState() {
-    _apiService
-        .setOptions('https://community-open-weather-map.p.rapidapi.com/');
-    Future.delayed(Duration.zero, () async {
-      Response response =
-          await _apiService.fetchCurrentWeather('Kyiv') as Response;
-      weatherData = WeatherData.fromJson(response.data);
-    });
-
+    weatherData = widget.initWeatherData;
     super.initState();
   }
 
@@ -36,20 +32,17 @@ class _MainColumnHomeWidgetState extends State<MainColumnHomeWidget> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TopDataWidget(
-          weatherData: weatherData,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 32),
+          child: TopDataWidget(
+            weatherData: weatherData,
+          ),
         ),
         MiddleDataWidget(
           weatherData: weatherData,
         ),
         BottomDataWidget(
           weatherData: weatherData,
-        ),
-        TextButton(
-          onPressed: () {
-            print(weatherData.main!.temp);
-          },
-          child: Text('Press'),
         ),
       ],
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/routes.dart';
-import 'package:weather_app/screens/home_screen.dart';
 
 void main() {
   runApp(const WeatherApp());
@@ -13,7 +12,6 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       routes: routes,
       initialRoute: '/',
     );
