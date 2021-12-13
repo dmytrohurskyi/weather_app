@@ -16,14 +16,14 @@ class _MinMaxTempTextWidgetState extends State<MinMaxTempTextWidget> {
       child: Row(
         children: [
           Text(
-            'Min: ${widget.weatherData.main!.tempMin!.ceil()??'undefined'}°C',
+            'Min: ${widget.weatherData.mainInformation!.tempMin!.ceil()??'undefined'}°C',
             style: const TextStyle(fontSize: 22, color: Colors.white),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 0, horizontal: 40),
           ),
           Text(
-            'Max: ${widget.weatherData.main!.tempMax!.ceil()??'undefined'}°C',
+            'Max: ${widget.weatherData.mainInformation!.tempMax!.ceil()??'undefined'}°C',
             style: const TextStyle(fontSize: 22, color: Colors.white),
           ),
         ],

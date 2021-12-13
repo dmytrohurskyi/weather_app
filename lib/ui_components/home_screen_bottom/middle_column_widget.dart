@@ -39,7 +39,7 @@ class _MiddleColumnWidgetState extends State<MiddleColumnWidget> {
                     ),
                   ),
                   Text(
-                    '${widget.weatherData.main!.humidity ?? '00'}',
+                    '${widget.weatherData.mainInformation!.humidity ?? '00'}',
                     style: const TextStyle(
                       fontSize: 17,
                       color: Colors.white,

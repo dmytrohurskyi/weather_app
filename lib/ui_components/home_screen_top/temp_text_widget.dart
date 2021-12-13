@@ -12,7 +12,7 @@ class _TempTextWidgetState extends State<TempTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '${widget.weatherData.main!.temp!.ceil()??'undefined'}°C',
+      '${widget.weatherData.mainInformation!.temp!.ceil()??'undefined'}°C',
       style: const TextStyle(fontSize: 68, color: Colors.white),
     );
   }

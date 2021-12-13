@@ -7,7 +7,6 @@ class LocationService {
   final Location location = Location();
   late bool _serviceEnabled;
   late PermissionStatus _permissionGranted;
-  late final LocationData? _locationData;
   String lastKnownLocation = '';
 
   Future<LocationData?> getCurrentLocationData() async {
@@ -26,10 +25,10 @@ class LocationService {
   }
 
   Future<String> getLocationName() async {
-    _locationData = await getCurrentLocationData();
+    var _locationData = await getCurrentLocationData();
     List<geocoding.Placemark> locationPlacemarks =
         await geocoding.placemarkFromCoordinates(
-            _locationData!.latitude!, _locationData!.longitude!);
+            _locationData!.latitude!, _locationData.longitude!);
     lastKnownLocation = '${locationPlacemarks.first.administrativeArea}, '
         '${locationPlacemarks.first.isoCountryCode}';
     return lastKnownLocation;

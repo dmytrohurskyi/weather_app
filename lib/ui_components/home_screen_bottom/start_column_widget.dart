@@ -37,7 +37,7 @@ class _StartColumnWidgetState extends State<StartColumnWidget> {
                   ),
                 ),
                 Text(
-                  '${widget.weatherData.main!.pressure ?? '0000'}',
+                  '${widget.weatherData.mainInformation!.pressure ?? '0000'}',
                   style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,
@@ -73,7 +73,7 @@ class _StartColumnWidgetState extends State<StartColumnWidget> {
                 Text(
                   DateFormat('kk:mm a').format(
                       DateTime.fromMillisecondsSinceEpoch(
-                          widget.weatherData.sys!.sunrise!)),
+                          widget.weatherData.timeStamps!.sunrise!)),
                   style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,

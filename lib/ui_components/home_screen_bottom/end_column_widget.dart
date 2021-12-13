@@ -74,7 +74,7 @@ class _EndColumnWidgetState extends State<EndColumnWidget> {
                 Text(
                   DateFormat('hh:mm a').format(
                       DateTime.fromMillisecondsSinceEpoch(
-                              widget.weatherData.sys!.sunset!)),
+                              widget.weatherData.timeStamps!.sunset!)),
                   style: const TextStyle(
                     fontSize: 17,
                     color: Colors.white,
