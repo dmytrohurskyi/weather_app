@@ -18,9 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /*final arguments = ModalRoute.of(context)?.settings.arguments as Map;
-    WeatherData initWeatherData;
-    initWeatherData = arguments['initWeatherData'];*/
     return FutureBuilder(
         future: _apiService.fetchCurrentWeather(),
         builder: (context, snapshot) {
